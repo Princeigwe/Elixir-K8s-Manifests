@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: elixir-io
+  labels:
+    environment: qa
+    tier: backend
+spec:
+  containers:
+  - name: elixir-io
+    image: princeigwe/elixir.io:latest
+    resources:
+      limits:
+        memory: "128Mi"
+        cpu: "500m"
+    ports:
+      - containerPort: 3000
+        name: http
+        protocol: TCP
