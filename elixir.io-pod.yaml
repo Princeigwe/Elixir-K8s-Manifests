@@ -9,6 +9,9 @@ spec:
   containers:
   - name: elixir-io
     image: princeigwe/elixir.io:latest
+    envFrom:
+      - secretRef:
+          name: elixir-io-secret
     resources:
       limits:
         memory: "128Mi"
