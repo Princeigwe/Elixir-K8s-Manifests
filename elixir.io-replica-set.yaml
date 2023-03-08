@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: elixir-io
+
+spec:
+  replicas: 4
+  selector:
+    matchLabels:  # running only pod that have both labels of app:elixir-io, environment:production
+      app: elixir-io
+      environment: production
+  
+  template:
+    metadata:
+      name: elixir-io
+      labels: # defining pod that have both labels of app:elixir-io, environment:production
+        app: elixir-io
+        environment: production
+    spec:
+      containers:
+        - name: elixir-io
+          image: princeigwe/elixir.io:latest
+          envFrom:
+          - secretRef:
+              name: elixir-io-secret
+          ports:
+          - containerPort: 3000
+            name: http
+            protocol: TCP
