@@ -8,6 +8,6 @@ spec:
     app: elixir-io
     environment: production
   ports:
-  - port: 80
+  - port: 8000
     targetPort: 3000
     protocol: TCP
